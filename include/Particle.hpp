@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL2/SDL.h>
 
 struct Vector2 {
     Vector2() : x(0.0f), y(0.0f){}
@@ -18,7 +19,9 @@ class Particle {
     public:
         virtual ~Particle() = default;
 
-        virtual void update(float delta_time) = 0;
+        virtual void update(float delta_time);
+
+        virtual void render(SDL_Renderer* renderer) = 0;
 
         void apply_force(const Vector2& force);
 
